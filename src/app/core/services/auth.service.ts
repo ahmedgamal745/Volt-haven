@@ -17,8 +17,8 @@ export class AuthService {
     return this.http.post(`${constant}/api/users`, data);
   }
 
-  // Optional login method if needed later
-  // userLogin(credentials: { email: string; password: string }): Observable<any> {
-  //   return this.http.post(`${constant}/login`, credentials);
-  // }
+  
+  userLogin(credentials: { email: string; password: string }): Observable<any> {
+    return this.http.post(`${constant}/login`, credentials);
+  }
 }
