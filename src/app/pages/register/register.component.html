@@ -1,0 +1,101 @@
+<p-toast></p-toast>
+
+
+<section class="register-page">
+  <div class="overlay"></div>
+
+  <div class="container">
+    <div class="register-container">
+      <!-- Left Register Card -->
+      <div class="left-panel">
+        <h1 class="re-title">IT'S BETTER <br> WHEN YOU'RE A MEMBER</h1>
+        <p class="subtitle">Move, shop and celebrate the best of Stridez</p>
+
+        <div class="social-buttons">
+          <button
+            pButton
+            type="button"
+            icon="pi pi-google"
+            label="Google"
+            class="p-button-rounded p-button-secondary"
+          ></button>
+          <button
+            pButton
+            type="button"
+            icon="pi pi-apple"
+            label="Apple"
+            class="p-button-rounded p-button-secondary"
+          ></button>
+        </div>
+
+        <form class="form-group" [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+          <input type="text" pInputText placeholder="Username*" formControlName="name" required/>
+           @if(name.invalid && name.touched && name.errors){@if(name.getError('required')){
+            <p-message
+            
+            severity="error"
+            text="Username is required must be from 3 to 25 characters"
+          ></p-message>
+           }
+            
+           }
+          <input type="email" pInputText placeholder="Email*" formControlName="email" required/>
+          @if(email.invalid && email.touched && email.errors){@if(name.getError('required')){
+            <p-message
+            
+            severity="error"
+            text="email is required."
+          ></p-message>
+          }
+            
+           }
+          <input type="password" pInputText placeholder="Password*" formControlName="password" required/>
+          @if(password.invalid && password.touched && password.errors){@if(password.getError('required')){
+            <p-message
+            
+            severity="error"
+            text="password is required."
+          ></p-message>
+          }
+            
+           }
+          <input type="password" pInputText placeholder="Confirm Password*" formControlName="CnfirmationPassword" required/>
+          
+          @if(CnfirmationPassword.invalid && CnfirmationPassword.touched && CnfirmationPassword.errors){@if(password.getError('required')){
+            <p-message
+            
+            severity="error"
+            text="confirmation password is required."
+          ></p-message>
+          } 
+          }
+          @if (CnfirmationPassword.invalid && CnfirmationPassword.touched && CnfirmationPassword.errors) {@if(CnfirmationPassword.getError('passNotMatch')){
+               <p-message
+            
+            severity="error"
+            text="passwords not matched ."
+          ></p-message>
+           }}
+
+          <button pButton type="submit" label="submit" class="register-btn"></button>
+        </form>
+        <p class="login-link">
+            Already have an account?
+            <a routerLink="/login">Sign in</a>
+          </p>
+      </div>
+
+      <!-- Right Image Panel -->
+      <div class="right-panel">
+        <img [src]="currentImage" alt="Main Image" class="slideshow-image" />
+      </div>
+    </div>
+  </div>
+</section>
+<ngx-spinner
+  bdColor="rgba(0, 0, 0, 0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-spin-clockwise"
+  [fullScreen]="true">
+</ngx-spinner>

@@ -1,0 +1,52 @@
+@import "primeicons/primeicons.css";
+@import "primeflex/primeflex.css";
+
+
+body {
+    margin: 0;
+}
+
+.contatiner{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+@media (min-width: 767px) {
+  .container {
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 100%;
+  }
+}
+@media (min-width: 768px) {
+  .container {
+    max-width: 740px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    max-width: 980px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+
+
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1320px;
+  }
+}
+
+

@@ -1,0 +1,1 @@
+export const constant = 'https://e-commerce-serverside.vercel.app';

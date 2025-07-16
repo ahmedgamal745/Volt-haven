@@ -1,0 +1,31 @@
+:host {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  background-color: black; /* Change background to black */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Style PrimeNG Menubar */
+::ng-deep .p-menubar {
+  background-color: black !important;
+  border: none;
+}
+
+/* Menubar items */
+::ng-deep .p-menubar-item-link {
+  color: white !important;
+}
+
+/* Icon color */
+::ng-deep .p-menubar-item-link .pi {
+  color: white !important;
+}
+
+/* Hover effect */
+::ng-deep .p-menubar-item-link:hover {
+  background-color: #222 !important;
+  color: #f1f1f1 !important;
+}
