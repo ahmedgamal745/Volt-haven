@@ -1,0 +1,72 @@
+<p-toast></p-toast>
+
+<section class="login-page">
+  <div class="overlay"></div>
+
+  <div class="container">
+    <div class="login-container">
+      <!-- Left Login Panel -->
+      <div class="left-panel">
+        <h1 class="re-title">WELCOME BACK</h1>
+        <p class="subtitle">Sign in to access your Stridez account</p>
+
+        <!-- Social Login Buttons -->
+        <div class="social-buttons">
+          <button
+            pButton
+            type="button"
+            icon="pi pi-google"
+            label="Sign in with Google"
+            class="p-button-rounded p-button-secondary"
+          ></button>
+          <button
+            pButton
+            type="button"
+            icon="pi pi-apple"
+            label="Sign in with Apple"
+            class="p-button-rounded p-button-secondary"
+          ></button>
+        </div>
+
+        <!-- Login Form -->
+        <form class="form-group" [formGroup]="loginForm" (ngSubmit)="loginSubmit()">
+          <input
+            type="email"
+            pInputText
+            placeholder="Email*"
+            formControlName="email"
+            required
+          />
+          <input
+            type="password"
+            pInputText
+            placeholder="Password*"
+            formControlName="password"
+            required
+          />
+          <button
+            pButton
+            type="submit"
+            label="Sign In"
+            class="login-btn"
+          ></button>
+        </form>
+
+        <!-- Account Link -->
+        <p class="login-link">
+          Don't have an account?
+          <a routerLink="/register">Create one</a>
+        </p>
+      </div>
+
+      <!-- Right Image Panel -->
+      <div class="right-panel">
+        <div class="css-slideshow"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#c57e7e" type="ball-circus" [fullScreen]="true">
+  <p style="color: rgb(141, 92, 92)"> Loading... </p>
+</ngx-spinner>
