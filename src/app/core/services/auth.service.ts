@@ -22,4 +22,13 @@ export class AuthService {
   userLogin(credentials:LoginData): Observable<any> {
     return this.http.post(`${constant}/api/users/auth`, credentials);
   }
+
+  handleAuth() : boolean{
+    if(localStorage.getItem('token')!=null){
+      return true
+    }else{
+      return false
+    }
+
+  }
 }

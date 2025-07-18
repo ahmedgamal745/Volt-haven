@@ -28,7 +28,7 @@
         </div>
 
         <form class="form-group" [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
-          <input type="text" pInputText placeholder="Username*" formControlName="name" required/>
+          <input type="text" [pAutoFocus]="true" pInputText placeholder="Username*" formControlName="name" required/>
           @if(name.invalid && name.touched && name.errors){
             @if(name.getError('required')){
               <p-message severity="error" text="Username is required must be from 3 to 25 characters"></p-message>

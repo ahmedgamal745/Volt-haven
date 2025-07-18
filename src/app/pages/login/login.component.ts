@@ -53,12 +53,14 @@ export class LoginComponent {
     this.loadingSpinner.show()
     this.auth.userLogin(data).subscribe({
       next: (res)=>{
-        if (res) {
+        if(res._id){
+          localStorage.setItem('token',res._id)
+        }
         this.loadingSpinner.hide();
         this.MEroror.showSuccess('Registration successful!')
         this.router.navigate(['/user']);
         this.loginForm.reset();
-        }
+        
       },
       error:(err)=>{
         this.loadingSpinner.hide();

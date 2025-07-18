@@ -32,6 +32,7 @@
         <form class="form-group" [formGroup]="loginForm" (ngSubmit)="loginSubmit()">
           <input
             type="email"
+            [pAutoFocus]="true"
             pInputText
             placeholder="Email*"
             formControlName="email"
@@ -40,6 +41,7 @@
           <input
             type="password"
             pInputText
+            
             placeholder="Password*"
             formControlName="password"
             required

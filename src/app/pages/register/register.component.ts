@@ -70,9 +70,13 @@ export class RegisterComponent {
     this.loadingSpinner.show();
     this.auth.userRegister(data).subscribe({
       next: (res) => {
-        this.MEroror.showError('Registration successful!');
+        this.MEroror.showSuccess('Registration successful!');
         this.loadingSpinner.hide();
-        this.router.navigate(['/login']);
+        const {email, password} = data 
+        this.auth.userLogin({email,password}).subscribe((next)=>{
+          localStorage.setItem('token',res._id)
+          this.router.navigate(['/user'])
+        })
         this.registrationForm.reset();
       },
       error: (err) => {
