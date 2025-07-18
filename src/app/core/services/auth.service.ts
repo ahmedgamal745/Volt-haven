@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { RegisterData } from '../interfaces/register-data';
 import { Observable } from 'rxjs';
 import { constant } from '../constant/ConstantApi';
+import { LoginData } from '../interfaces/login-data';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,7 @@ export class AuthService {
   }
 
   
-  userLogin(credentials: { email: string; password: string }): Observable<any> {
-    return this.http.post(`${constant}/login`, credentials);
+  userLogin(credentials:LoginData): Observable<any> {
+    return this.http.post(`${constant}/api/users/auth`, credentials);
   }
 }

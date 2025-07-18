@@ -1,24 +1,16 @@
 import { Component } from '@angular/core';
-import { PanelModule } from 'primeng/panel';
-import { ButtonModule } from 'primeng/button';
-import { InputTextModule } from 'primeng/inputtext';
-import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, ValidatorFn, Validators } from '@angular/forms';
-import { MessageModule } from 'primeng/message';
-import { MessagesModule } from 'primeng/messages';
-import { NgxSpinnerService, NgxSpinnerModule } from 'ngx-spinner';
-import { ToastModule } from 'primeng/toast';
-import { CommonModule } from '@angular/common';
+import { AbstractControl, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import {   NgxSpinnerService } from 'ngx-spinner';
 import { AuthService } from '../../core/services/auth.service';
 import { RegisterData } from '../../core/interfaces/register-data';
-import { RouterLink, Router } from '@angular/router';
+import {  Router, RouterLinkActive} from '@angular/router';
 import { ErorrMessageService } from '../../core/services/erorr-message.service';
+import { SharedModuleModule } from '../../shared/sharedModule/shared-module/shared-module.module';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [ReactiveFormsModule, PanelModule, ButtonModule,
-    InputTextModule, RouterLink, ToastModule, CommonModule,
-    MessagesModule, MessageModule, NgxSpinnerModule, RouterLink],
+  imports: [SharedModuleModule,RouterLinkActive],
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
@@ -67,7 +59,7 @@ export class RegisterComponent {
 
   onSubmit() {
     if (!this.registrationForm.valid) {
-      this.MEroror.showError('Please fill in all required fields correctly.');
+      this.MEroror.showError('Please fill in all required fields correctly.')
       return;
     } else {
       this.userRegister(this.registrationForm.value);

@@ -1,30 +1,17 @@
 import { Component } from '@angular/core';
-import { PanelModule } from 'primeng/panel';
-import { ButtonModule } from 'primeng/button';
-import { InputTextModule } from 'primeng/inputtext';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MessageModule } from 'primeng/message';
-import { MessagesModule } from 'primeng/messages';
-import { NgxSpinnerModule } from 'ngx-spinner';
-import { ToastModule } from 'primeng/toast';
-import { CommonModule } from '@angular/common';
-import { RouterLink, Router } from '@angular/router';
+import {  NgxSpinnerService } from 'ngx-spinner';
+import {  Router } from '@angular/router';
+import { ErorrMessageService } from '../../core/services/erorr-message.service';
+import { LoginData } from '../../core/interfaces/login-data';
+import { AuthService } from '../../core/services/auth.service';
+import { SharedModuleModule } from '../../shared/sharedModule/shared-module/shared-module.module';
 
 @Component({
   selector: 'app-login',
   standalone: true,
   imports: [
-    ReactiveFormsModule,
-    PanelModule,
-    ButtonModule,
-    InputTextModule,
-    RouterLink,
-    ToastModule,
-    CommonModule,
-    MessagesModule,
-    MessageModule,
-    NgxSpinnerModule,
-    RouterLink
+   SharedModuleModule
   ],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
@@ -46,16 +33,38 @@ export class LoginComponent {
     });
   }
 
-  constructor() {
+  constructor(private loadingSpinner: NgxSpinnerService,private MEroror: ErorrMessageService,private auth: AuthService, private router: Router) {
     this.initloginForm();
     this.initloginFormGroup();
   }
 
   loginSubmit() {
-    if (this.loginForm.valid) {
-      console.log(this.loginForm.value);
+    if (!this.loginForm.valid) {
+      this.MEroror.showError('Please fill in all required fields correctly.')
+      
     } else {
-      console.log('login form not valid');
+      
+      this.logIn(this.loginForm.value);
     }
+  }
+  
+
+  logIn(data:LoginData){
+    this.loadingSpinner.show()
+    this.auth.userLogin(data).subscribe({
+      next: (res)=>{
+        if (res) {
+        this.loadingSpinner.hide();
+        this.MEroror.showSuccess('Registration successful!')
+        this.router.navigate(['/user']);
+        this.loginForm.reset();
+        }
+      },
+      error:(err)=>{
+        this.loadingSpinner.hide();
+        const errorMessage = err.error.error;
+        this.MEroror.showError(errorMessage);
+      }
+    })
   }
 }

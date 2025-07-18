@@ -10,5 +10,6 @@ export const routes: Routes = [
            {path:'register',loadComponent:()=>import('./pages/register/register.component').then((c)=>c.RegisterComponent)},
         ]
     },
-    {path:'user', loadComponent:()=>import('./layouts/user-layout/user-layout.component').then((c)=>c.UserLayoutComponent)}
+    {path:'user', loadComponent:()=>import('./layouts/user-layout/user-layout.component').then((c)=>c.UserLayoutComponent)},
+    {path:'home',loadComponent:()=>import('./pages/home/home.component').then((c)=>c.HomeComponent)}
 ];

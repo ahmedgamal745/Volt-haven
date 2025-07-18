@@ -6,13 +6,13 @@ import { InputTextModule } from 'primeng/inputtext';
 import { CommonModule } from '@angular/common';
 import { Ripple } from 'primeng/ripple';
 import { MenubarModule } from 'primeng/menubar';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
 
     selector: 'app-auth-nav',
   imports: [
-    MenubarModule,CommonModule,RouterLink
+    MenubarModule,CommonModule,RouterLink,RouterLinkActive
   ],
   
   templateUrl: './auth-nav.component.html',
