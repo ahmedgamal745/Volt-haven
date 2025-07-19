@@ -6,6 +6,7 @@ import { RegisterData } from '../../core/interfaces/register-data';
 import {  Router, RouterLinkActive} from '@angular/router';
 import { ErorrMessageService } from '../../core/services/erorr-message.service';
 import { SharedModuleModule } from '../../shared/sharedModule/shared-module/shared-module.module';
+import { UserDataService } from '../../core/services/user-data.service';
 
 @Component({
   selector: 'app-register',
@@ -41,7 +42,8 @@ export class RegisterComponent {
     private MEroror: ErorrMessageService,
     private auth: AuthService,
     private loadingSpinner: NgxSpinnerService,
-    private router: Router
+    private router: Router,
+    private userData:UserDataService
   ) {
     this.initFormControls();
     this.initFormGroup();
@@ -72,6 +74,8 @@ export class RegisterComponent {
       next: (res) => {
         this.MEroror.showSuccess('Registration successful!');
         this.loadingSpinner.hide();
+        this.userData.userName.next(res.name)
+        localStorage.setItem('username',res.name)
         const {email, password} = data 
         this.auth.userLogin({email,password}).subscribe((next)=>{
           localStorage.setItem('token',res._id)

@@ -6,6 +6,7 @@ import { ErorrMessageService } from '../../core/services/erorr-message.service';
 import { LoginData } from '../../core/interfaces/login-data';
 import { AuthService } from '../../core/services/auth.service';
 import { SharedModuleModule } from '../../shared/sharedModule/shared-module/shared-module.module';
+import { UserDataService } from '../../core/services/user-data.service';
 
 @Component({
   selector: 'app-login',
@@ -33,7 +34,12 @@ export class LoginComponent {
     });
   }
 
-  constructor(private loadingSpinner: NgxSpinnerService,private MEroror: ErorrMessageService,private auth: AuthService, private router: Router) {
+  constructor(
+    private loadingSpinner: NgxSpinnerService,
+    private MEroror: ErorrMessageService,
+    private auth: AuthService,
+    private router: Router,
+    private userData:UserDataService) {
     this.initloginForm();
     this.initloginFormGroup();
   }
@@ -57,6 +63,8 @@ export class LoginComponent {
           localStorage.setItem('token',res._id)
         }
         this.loadingSpinner.hide();
+        this.userData.userName.next(res.name)
+        localStorage.setItem('username',res.name)
         this.MEroror.showSuccess('Registration successful!')
         this.router.navigate(['/user']);
         this.loginForm.reset();

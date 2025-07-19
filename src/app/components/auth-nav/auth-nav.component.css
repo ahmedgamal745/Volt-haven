@@ -10,7 +10,7 @@
 
 /* Style PrimeNG Menubar */
 ::ng-deep .p-menubar {
-  background-color: black !important;
+  background-color: rgb(131, 128, 128) !important;
   border: none;
 }
 
@@ -28,4 +28,21 @@
 ::ng-deep .p-menubar-item-link:hover {
   background-color: #222 !important;
   color: #f1f1f1 !important;
+}
+.logo {
+     height: 4rem;              
+    display: flex;
+    align-items: center;
+    padding-left: 0.3rem;
+}
+
+
+
+.logo-figure {
+    width: 7rem; 
+    height: 5.5rem;
+    background-image: url('../../../assets/images/logo.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
