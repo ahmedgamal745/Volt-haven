@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, signal, Signal } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { constant } from '../constant/ConstantApi';
+import { constant, constantProduct } from '../constant/ConstantApi';
+import { Product } from '../interfaces/product';
 
 @Injectable({
   providedIn: 'root'
@@ -13,5 +14,10 @@ export class UserDataService {
 
   CartCount(id:string):Observable<any>{
     return this.http.get(`${constant}/my-cart/${id}`)
+  }
+
+
+  getProduct(): Observable<any> {
+    return this.http.get(`${constantProduct}/products`);
   }
 }

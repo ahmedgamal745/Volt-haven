@@ -31,4 +31,9 @@ export class AuthService {
     }
 
   }
+
+
+  logout(): Observable<any> {
+    return this.http.post(`${constant}/api/users/logout`, {});
+  }
 }

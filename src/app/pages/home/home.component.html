@@ -1,1 +1,32 @@
-<p>home works!</p>
+<section>
+  <div class="carousel">
+  <div class="list">
+    <div class="item"
+      *ngFor="let item of slides; let i = index"
+      [class.active]="i === 1"
+      [class.main]="i === 0"
+      [class.hidden]="i >= 6"
+      [ngClass]="[item.class, getPositionClass(i)]">
+      
+      <div class="content" *ngIf="i === 1">
+        <div class="title">VoltHeaven</div>
+        <div class="name">{{ item.title }}</div>
+        <div class="des">{{ item.subtitle }}</div>
+        <div class="btn">
+          <button>Shop with us</button>
+          <button>Subscribe</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="arrows">
+    <button class="prev" (click)="showSlider('prev')">&lt;</button>
+    <button class="next" (click)="showSlider('next')">&gt;</button>
+  </div>
+
+  <div class="timeRunning" [style.animation]="timeBarAnimation"></div>
+</div>
+</section>
+
+<app-some-product></app-some-product>

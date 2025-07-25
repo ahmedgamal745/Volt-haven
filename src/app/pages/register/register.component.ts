@@ -11,7 +11,7 @@ import { UserDataService } from '../../core/services/user-data.service';
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [SharedModuleModule,RouterLinkActive],
+  imports: [SharedModuleModule],
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
