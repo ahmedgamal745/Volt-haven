@@ -29,4 +29,20 @@
 </div>
 </section>
 
-<app-some-product></app-some-product>
+<!-- <app-some-product></app-some-product> -->
+<app-product-grid
+title="Our Products"
+[products]="allProducts"
+[customButtonText]="'See More Products'"
+[productLimit]="4"
+(seeMoreClicked)="gotoallProducts()"
+></app-product-grid>
+
+<hr>
+<app-product-grid
+title="Most Expensive Products"
+[products]="mostExpensiveProduct"
+[showSeeMore]="false"
+[productLimit]="8"
+
+></app-product-grid>

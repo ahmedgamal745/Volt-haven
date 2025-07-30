@@ -1,0 +1,67 @@
+.card-container {
+    margin-top: 100px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.category-card {
+  position: relative;
+  height: 200px;
+  border-radius: 10px;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.category-card:nth-child(1) { animation-delay: 0.1s; }
+.category-card:nth-child(2) { animation-delay: 0.2s; }
+.category-card:nth-child(3) { animation-delay: 0.3s; }
+.category-card:nth-child(4) { animation-delay: 0.4s; }
+.category-card:nth-child(5) { animation-delay: 0.5s; }
+.category-card:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.4s ease;
+  text-align: center;
+  padding: 10px;
+}
+
+.category-card:hover .overlay {
+  opacity: 1;
+}
+
+.overlay h2 {
+  margin: 0;
+  font-size: 20px;
+  letter-spacing: 1px;
+}
+
+/* Photo classes with background images */
+.photo-1 { background-image: url('../../../assets/images/tv.jpg'); }
+.photo-2 { background-image: url('../../../assets/images/audio.jpg'); }
+.photo-3 { background-image: url('../../../assets/images/laptop.avif'); }
+.photo-4 { background-image: url('../../../assets/images/mobile.avif'); }
+.photo-5 { background-image: url('../../../assets/images/gaming.jpg'); }
+.photo-6 { background-image: url('../../../assets/images/appliances.webp'); }

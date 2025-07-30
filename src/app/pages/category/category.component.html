@@ -1,1 +1,14 @@
-<p>category works!</p>
+
+<div class="card-container">
+  <div 
+    class="category-card animate" 
+    *ngFor="let category of categories" 
+    [ngClass]="category.class"
+    (click)="navigateToCategory(category.title)"
+  >
+    <div class="overlay">
+      <h2>{{ category.title.toUpperCase() }}</h2>
+      
+    </div>
+  </div>
+</div>

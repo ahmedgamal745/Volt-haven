@@ -114,7 +114,7 @@ export class UserNavComponent {
       }
     });
   }
-
+  
   logout() {
     this.loadingSpinner.show(); // Show loading spinner during logout
     this.authService.logout().subscribe({

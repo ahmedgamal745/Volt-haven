@@ -21,11 +21,11 @@
         </ng-template>
         
         <ng-template #end>
-            <div class="flex items-center justify-content-center align-items-center gap-4" style="margin:10px; ">
+            <div class="flex flex-wrap items-center justify-center align-items-center gap-4 m-2" style="margin:10px; ">
                 <p-overlaybadge [value]="cartCount" >
                     <i class="pi pi-shopping-cart" style="font-size: 1.5rem;"></i>
                 </p-overlaybadge>
-                <p-menu #menu [popup]="true" [model]="menuItems"></p-menu>
+                <p-menu #menu [popup]="true" [model]="menuItems" appendTo="body"></p-menu>
                     <button pButton 
                             type="button" 
                             class="customer-btn" 

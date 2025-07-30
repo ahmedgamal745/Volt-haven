@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { GalleriaModule } from 'primeng/galleria';
 import { ButtonModule } from 'primeng/button';
 import { CarouselModule } from 'primeng/carousel';
@@ -8,11 +8,15 @@ import { CardModule } from 'primeng/card';
 import { PaginatorModule } from 'primeng/paginator';
 import { CommonModule } from '@angular/common';
 import { SomeProductComponent } from "./some-product/some-product.component";
+import { ProductGridComponent } from "../../shared/sharedComponant/product-grid/product-grid.component";
+import { UserDataService } from '../../core/services/user-data.service';
+import { Product } from '../../core/interfaces/product';
+import { Router, RouterLink, RouterModule } from '@angular/router';
 
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, SomeProductComponent]
+  imports: [CommonModule,ProductGridComponent]
     ,
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
@@ -25,6 +29,9 @@ export class HomeComponent {
     { title: 'PlayStation 5 Pro', subtitle: 'Next-gen gaming at its finest.', class: 'slide-4' },
     
   ];
+  constructor(private productService: UserDataService,private router: Router) {}
+allProducts!: Product[] ;
+mostExpensiveProduct!: Product []
 
   timeRunning = 3000;
   timeAutoNext = 7000;
@@ -36,6 +43,7 @@ export class HomeComponent {
     this.autoSlideInterval = setInterval(() => {
       this.showSlider('next');
     }, this.timeAutoNext);
+    this. previewProducts()
   }
 
   ngOnDestroy() {
@@ -75,5 +83,19 @@ export class HomeComponent {
     if (index === 4) return 'pos-3';
     if (index === 5) return 'pos-4';
     return 'hidden';
+  }
+
+  gotoallProducts() {
+  console.log('Event received'); // Check if this appears
+  this.router.navigate(['/user/home/all-products']);
+}
+  previewProducts(){
+    this.productService.getProduct().subscribe((data) => {
+      this.allProducts = data.products 
+      this.mostExpensiveProduct = this.allProducts.sort((a, b) => b.price - a.price);
+      
+      console.log(this.mostExpensiveProduct);
+      console.log(this.allProducts);
+    });
   }
 }

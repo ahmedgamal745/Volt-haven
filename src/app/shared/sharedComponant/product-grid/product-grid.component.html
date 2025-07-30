@@ -1,0 +1,24 @@
+<h2 class="title">{{ title }}</h2>
+
+<div class="product-grid">
+ @for (item of displayedProducts; track item.id) {
+     <div class="card">
+      <div class="card-image-container">
+        <img [src]="item.image" [alt]="item.title" />
+        <div class="overlay">
+          <div class="info">
+            <h4>{{ sliceTitle ? (item.title | slice:0:15) + '...' : item.title }}</h4>
+            <p><strong>Brand:</strong> {{ item.brand }}</p>
+            <p><strong>Discount:</strong> {{ item.discount || 0 }}%</p>
+            <p><strong>Price:</strong> ${{ item.price }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+</div>
+@if (showSeeMore){
+     <div class="see-more-container">
+    <button (click)="onSeeMoreClick()">{{ customButtonText }}</button>
+  </div>
+}

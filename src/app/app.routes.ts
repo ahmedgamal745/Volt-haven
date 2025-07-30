@@ -20,10 +20,12 @@ export const routes: Routes = [
         children:[
             {path:'',redirectTo:'home', pathMatch:'full'},
             {path:'home',loadComponent:()=>import('./pages/home/home.component').then((c)=>c.HomeComponent)},
+            {path:'home/all-products',loadComponent:()=>import('./pages/home/all-product/all-product.component').then((c)=>c.AllProductComponent)},
             {path:'details',loadComponent:()=>import('./pages/details/details.component').then((c)=>c.DetailsComponent)},
             {path:'products',loadComponent:()=>import('./pages/product/product.component').then((c)=>c.ProductComponent)},
             {path:'cart',loadComponent:()=>import('./pages/cart/cart.component').then((c)=>c.CartComponent)},
-            {path:'category',loadComponent:()=>import('./pages/category/category.component').then((c)=>c.CategoryComponent)}
+            {path:'category',loadComponent:()=>import('./pages/category/category.component').then((c)=>c.CategoryComponent)},
+            {path:'category/:category',loadComponent:()=>import('./pages/category/category-items/category-items.component').then((c)=>c.CategoryItemsComponent)},
         ]
 
     },
