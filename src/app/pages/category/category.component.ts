@@ -23,9 +23,7 @@ export class CategoryComponent {
      { title: 'gaming', class: 'photo-5' },
      { title: 'appliances', class: 'photo-6' },
   ]
-  getItembyCategory!: Product[] ;
-  allProducts!: Product[]
-
+  
   constructor(private categoryService: UserDataService, private router: Router) {}
 
   navigateToCategory(category: string) {

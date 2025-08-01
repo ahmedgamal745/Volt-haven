@@ -1,9 +1,12 @@
 <section [style]="{ 'margin-top': '100px'}">
     <app-product-grid
-
+[productType]="1"
 [products]="getItembyCategory"
 [showSeeMore]="false"
 
 
 ></app-product-grid>
 </section>
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#c57e7e" type="ball-circus" [fullScreen]="true">
+  <p style="color: rgb(141, 92, 92)"> Loading... </p>
+</ngx-spinner>

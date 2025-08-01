@@ -30,19 +30,47 @@
 </section>
 
 <!-- <app-some-product></app-some-product> -->
+
 <app-product-grid
-title="Our Products"
+
+title="Tech Products"
+[productType]="1"
 [products]="allProducts"
 [customButtonText]="'See More Products'"
 [productLimit]="4"
-(seeMoreClicked)="gotoallProducts()"
+(seeMoreClicked)="gotoallProducts('Tech')"
 ></app-product-grid>
 
 <hr>
 <app-product-grid
-title="Most Expensive Products"
-[products]="mostExpensiveProduct"
+
+title="Most Expensive Tech Products"
+
+[productType]="1"
+[products]="mostExpensiveTechProduct"
 [showSeeMore]="false"
 [productLimit]="8"
 
 ></app-product-grid>
+<hr>
+<app-product-grid
+title="Beauty Products"
+[BeautyProduct]="BeautyProducts"
+[productType]="2"
+[productLimit]="4"
+[customButtonText]="'See More Products'"
+(seeMoreClicked)="gotoallProducts('Beauty')"
+></app-product-grid>
+<hr>
+<app-product-grid
+
+title="Most Expensive Beauty Products"
+
+[productType]="2"
+[BeautyProduct]="mostExpensiveBeautyProduct"
+[showSeeMore]="false"
+[productLimit]="8"
+
+></app-product-grid>
+
+

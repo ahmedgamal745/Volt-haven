@@ -1,21 +1,46 @@
 <h2 class="title">{{ title }}</h2>
 
 <div class="product-grid">
- @for (item of displayedProducts; track item.id) {
-     <div class="card">
-      <div class="card-image-container">
-        <img [src]="item.image" [alt]="item.title" />
-        <div class="overlay">
-          <div class="info">
-            <h4>{{ sliceTitle ? (item.title | slice:0:15) + '...' : item.title }}</h4>
-            <p><strong>Brand:</strong> {{ item.brand }}</p>
-            <p><strong>Discount:</strong> {{ item.discount || 0 }}%</p>
-            <p><strong>Price:</strong> ${{ item.price }}</p>
+
+    @if (productType === 1) {
+      @for (item of (displayedProducts); track item.id) {
+        <div class="card">
+          <div class="card-image-container">
+            <img [src]="item.image" [alt]="item.title" />
+            <div class="overlay">
+              <div class="info">
+                <h4>{{ sliceTitle ? (item.title | slice:0:15) + '...' : item.title }}</h4>
+                <p><strong>Brand:</strong> {{ item.brand }}</p>
+                <p><strong>Discount:</strong> {{ item.discount || 0 }}%</p>
+                <p><strong>Price:</strong> ${{ item.price }}</p>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-  }
+      }
+    }
+    @else if (productType === 2) {
+      @for (item of displayedBeautyProducts; track item.id) {
+        <div class="card">
+          <div class="card-image-container">
+            <img [src]="item.thumbnail || item.images" [alt]="item.title" />
+            <div class="overlay">
+              <div class="info">
+                <h4>{{ sliceTitle ? (item.title | slice:0:15) + '...' : item.title }}</h4>
+                <p><strong>Brand:</strong> {{ item.brand }}</p>
+                <p><strong>Discount:</strong> {{ item.discountPercentage|| 0 }}%</p>
+                <p><strong>Price:</strong> ${{ item.price }}</p>
+                <p><strong>Rating:</strong> {{ item.availabilityStatus }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+    }@else{
+
+    }
+ 
+ 
 </div>
 @if (showSeeMore){
      <div class="see-more-container">

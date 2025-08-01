@@ -1,10 +1,22 @@
 
 <section [style]="{ 'margin-top': '100px'}">
-<app-product-grid
+    @if (productType) {
+      <app-product-grid
 
-title="Our Products"
+title="Our tech Products"
+[productType]="1"
 [products]="allProducts"
 
 
 ></app-product-grid>
+    } @else {
+      <app-product-grid
+        title="Our Beauty Products"
+        [productType]="2"
+        [BeautyProduct]="beautyProducts"
+      ></app-product-grid>
+    }
 </section>
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#c57e7e" type="ball-circus" [fullScreen]="true">
+  <p style="color: rgb(141, 92, 92)"> Loading... </p>
+</ngx-spinner>

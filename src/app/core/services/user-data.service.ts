@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, signal, Signal } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { constant, constantProduct } from '../constant/ConstantApi';
+import { constant, constantProduct, constantProduct2 } from '../constant/ConstantApi';
 import { Product } from '../interfaces/product';
 
 @Injectable({
@@ -19,5 +19,8 @@ export class UserDataService {
 
   getProduct(): Observable<any> {
     return this.http.get(`${constantProduct}/products`);
+  }
+  getProduct2(): Observable<any> {
+    return this.http.get(`${constantProduct2}/products`);
   }
 }
