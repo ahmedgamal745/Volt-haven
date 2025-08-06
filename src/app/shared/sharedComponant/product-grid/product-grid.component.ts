@@ -1,5 +1,5 @@
 import { Product2 } from './../../../core/interfaces/product';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, input, Input, Output } from '@angular/core';
 import { Product } from '../../../core/interfaces/product';
 import { CommonModule, CurrencyPipe } from '@angular/common';
 
@@ -13,7 +13,8 @@ import { CommonModule, CurrencyPipe } from '@angular/common';
 export class ProductGridComponent {
 @Input() title!: string 
 @Input() products!: Product[]  
-@Input() BeautyProduct!: Product2[] ;
+@Input() MarketProduct!: Product2[] ;
+@Input() ourCategories! : any[]
 @Input() productType!: number ;
 @Input() showSeeMore: boolean = true;
 @Input() sliceTitle: boolean = true;
@@ -22,17 +23,26 @@ export class ProductGridComponent {
 @Output() seeMoreClicked = new EventEmitter<void>();
 
   get displayedProducts() {
-    this.productType = 1;
+    
    return this.productLimit? this.products.slice(0, this.productLimit) : this.products;
 
   }
   get displayedBeautyProducts() {
     
-    return this.productLimit ? this.BeautyProduct.slice(0, this.productLimit)
-      : this.BeautyProduct;
+    return this.productLimit ? this.MarketProduct.slice(0, this.productLimit)
+      : this.MarketProduct;
+  }
+  get displayedallProducts(){
+    return this.productLimit ? this.ourCategories.slice(0, this.productLimit)
+      : this.ourCategories;
   }
    onSeeMoreClick() {
   console.log('See more clicked'); // Check if this appears
   this.seeMoreClicked.emit();
 }
+
+
+//  isValidType(): boolean {
+//     return this.productType === 1 || this.productType === 2;
+//   }
 }

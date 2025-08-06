@@ -20,7 +20,11 @@ export class UserDataService {
   getProduct(): Observable<any> {
     return this.http.get(`${constantProduct}/products`);
   }
+  getCategoryType():Observable<any>{
+    return this.http.get(`${constantProduct}/products/category`)
+  }
   getProduct2(): Observable<any> {
     return this.http.get(`${constantProduct2}/products`);
   }
+
 }

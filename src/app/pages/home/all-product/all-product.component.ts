@@ -15,7 +15,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class AllProductComponent {
  allProducts!: Product[] ;
- beautyProducts!: Product2[] ;
+ MarketProducts!: Product2[] ;
  productType: boolean = true;
 
   constructor(private productService: UserDataService,private loadingSpinner: NgxSpinnerService,private route: ActivatedRoute) {}
@@ -39,10 +39,10 @@ ngOnInit() {
            this.allProducts = data.products;
            this.loadingSpinner.hide();
          });
-       }else if (type === 'Beauty') {
+       }else if (type === 'Market') {
          this.productService.getProduct2().subscribe((data) => {
           this.productType = false;
-           this.beautyProducts = data.products;
+           this.MarketProducts = data.products;
            this.loadingSpinner.hide();
          });
        }

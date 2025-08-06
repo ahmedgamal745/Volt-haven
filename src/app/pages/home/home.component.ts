@@ -1,14 +1,13 @@
 
 import { Component, Input } from '@angular/core';
-
 import { CommonModule } from '@angular/common';
-
 import { ProductGridComponent } from "../../shared/sharedComponant/product-grid/product-grid.component";
 import { UserDataService } from '../../core/services/user-data.service';
 import { Product, Product2 } from '../../core/interfaces/product';
 import { Router, RouterLink, RouterModule } from '@angular/router';
 import { SharedModuleModule } from '../../shared/sharedModule/shared-module/shared-module.module';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { forkJoin } from 'rxjs';
 
 
 @Component({
@@ -27,14 +26,15 @@ export class HomeComponent {
     
   ];
   constructor(private productService: UserDataService,private router: Router,private loadingSpinner: NgxSpinnerService,) {}
-  itemType =[
-    { title: 'Tech' },
-    { title: 'Beauty' },
-  ]
+  // itemType =[
+  //   { title: 'Tech' },
+  //   { title: 'Beauty' },
+  // ]
 allProducts!: Product[] ;
-BeautyProducts!: Product2[] ;
-mostExpensiveTechProduct!: Product []
-mostExpensiveBeautyProduct!: Product2 []
+MarketProducts!: Product2[] ;
+// mostExpensiveTechProduct!: Product []
+ mostExpensiveProduct!: any []
+CategoryProduct!: string[]
   timeRunning = 3000;
   timeAutoNext = 7000;
   timeBarAnimation = 'runningTime 7s linear forwards';
@@ -93,22 +93,27 @@ mostExpensiveBeautyProduct!: Product2 []
   this.router.navigate(['/user/home/all-products', type]);
 }
   previewProducts() {
-  // Tech products
-  this.productService.getProduct()?.subscribe((data) => {
-    this.allProducts = data.products;
-    this.mostExpensiveTechProduct = [...this.allProducts].sort((a, b) => b.price - a.price);
-    console.log(this.allProducts);
-  });
-
-  // Beauty products
+   const product$ = this.productService.getProduct?.();
   const product2$ = this.productService.getProduct2?.();
-  if (product2$) {
-    product2$.subscribe((data) => {
-      this.BeautyProducts = data.products;
-      console.log(this.BeautyProducts);
-      this.mostExpensiveBeautyProduct = [...this.BeautyProducts].sort((a, b) => b.price - a.price);
+
+  if (product$ && product2$) {
+    forkJoin([product$, product2$]).subscribe(([techData, marketData]) => {
+      this.allProducts = techData.products;
+      this.MarketProducts = marketData.products;
+
+      // Combine and sort by price descending
+      const combinedProducts = [...this.allProducts, ...this.MarketProducts];
+      this.mostExpensiveProduct = combinedProducts.sort((a, b) => b.price - a.price);
+
+      // Optional: Extract category list from MarketProducts
+      this.CategoryProduct = this.MarketProducts.map(p => p.category);
+
+      console.log('All Products:', this.allProducts);
+      console.log('Market Products:', this.MarketProducts);
+      console.log('Most Expensive Products:', this.mostExpensiveProduct);
     });
   }
+  
 }
   
     

@@ -31,6 +31,9 @@
 
 <!-- <app-some-product></app-some-product> -->
 
+
+
+
 <app-product-grid
 
 title="Tech Products"
@@ -42,7 +45,7 @@ title="Tech Products"
 ></app-product-grid>
 
 <hr>
-<app-product-grid
+<!-- <app-product-grid
 
 title="Most Expensive Tech Products"
 
@@ -51,18 +54,29 @@ title="Most Expensive Tech Products"
 [showSeeMore]="false"
 [productLimit]="8"
 
-></app-product-grid>
-<hr>
+></app-product-grid> -->
+
 <app-product-grid
-title="Beauty Products"
-[BeautyProduct]="BeautyProducts"
+title="Market Products"
+[MarketProduct]="MarketProducts"
 [productType]="2"
 [productLimit]="4"
 [customButtonText]="'See More Products'"
-(seeMoreClicked)="gotoallProducts('Beauty')"
+(seeMoreClicked)="gotoallProducts('Market')"
 ></app-product-grid>
+
+
 <hr>
 <app-product-grid
+
+title="MOST Expensive Product"
+[ourCategories]="mostExpensiveProduct"
+
+[customButtonText]="'See More Products'"
+[productLimit]="4"
+[showSeeMore]="false"
+></app-product-grid>
+<!-- <app-product-grid
 
 title="Most Expensive Beauty Products"
 
@@ -71,6 +85,6 @@ title="Most Expensive Beauty Products"
 [showSeeMore]="false"
 [productLimit]="8"
 
-></app-product-grid>
+></app-product-grid> -->
 
 

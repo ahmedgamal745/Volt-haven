@@ -36,11 +36,28 @@
           </div>
         </div>
       }
-    }@else{
-
+    } @else {
+    <!-- Show both types -->
+    @for (item of displayedallProducts; track item.id) {
+      <div class="card">
+        <div class="card-image-container">
+          <img [src]="item.image || item.thumbnail || item.images" [alt]="item.title" />
+          <div class="overlay">
+            <div class="info">
+              <h4>{{ sliceTitle ? (item.title | slice: 0:15) + '...' : item.title }}</h4>
+              <p><strong>Brand:</strong> {{ item.brand }}</p>
+              <p><strong>Discount:</strong> {{ item.discount || item.discountPercentage ||0 }}%</p>
+              <p><strong>Price:</strong> ${{ item.price }}</p>
+               <p><strong>Rating:</strong> {{ item.availabilityStatus }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
     }
- 
- 
+
+    
+  }
+
 </div>
 @if (showSeeMore){
      <div class="see-more-container">
