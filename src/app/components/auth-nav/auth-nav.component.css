@@ -16,7 +16,7 @@
 
 /* Menubar items */
 ::ng-deep .p-menubar-item-link {
-  color: white !important;
+  color: rgb(214, 70, 70) !important;
 }
 
 /* Icon color */

@@ -4,15 +4,21 @@
 
     @if (productType === 1) {
       @for (item of (displayedProducts); track item.id) {
-        <div class="card">
+        <div class="card" >
           <div class="card-image-container">
-            <img [src]="item.image" [alt]="item.title" />
+            <img #image [src]="item.image"  [alt]="item.title"  (error)="onImgError($event)" class="product-image" (click)="goToItem(  item.category ,item.id)"/>
             <div class="overlay">
               <div class="info">
                 <h4>{{ sliceTitle ? (item.title | slice:0:15) + '...' : item.title }}</h4>
                 <p><strong>Brand:</strong> {{ item.brand }}</p>
                 <p><strong>Discount:</strong> {{ item.discount || 0 }}%</p>
                 <p><strong>Price:</strong> ${{ item.price }}</p>
+                <div class="cart-controls">
+                  <button (click)="decrement(item)">−</button>
+                  <span>{{ productQuantities[item.id] || 0 }}</span>
+                  <button (click)="increment(item)">+</button>
+                  <button class="add-cart-btn" (click)="addToCart(item)" [disabled]="(productQuantities[item.id] || 0) === 0">Add to Cart</button>
+                </div> 
               </div>
             </div>
           </div>
@@ -21,16 +27,22 @@
     }
     @else if (productType === 2) {
       @for (item of displayedBeautyProducts; track item.id) {
-        <div class="card">
+        <div class="card"  >
           <div class="card-image-container">
-            <img [src]="item.thumbnail || item.images" [alt]="item.title" />
+            <img [src]="item.thumbnail || item.images" [alt]="item.title" (click)="goToItem(  item.category ,item.id)"/>
             <div class="overlay">
               <div class="info">
                 <h4>{{ sliceTitle ? (item.title | slice:0:15) + '...' : item.title }}</h4>
                 <p><strong>Brand:</strong> {{ item.brand }}</p>
                 <p><strong>Discount:</strong> {{ item.discountPercentage|| 0 }}%</p>
                 <p><strong>Price:</strong> ${{ item.price }}</p>
-                <p><strong>Rating:</strong> {{ item.availabilityStatus }}</p>
+                <p><strong>availabilityStatus:</strong> {{ item.availabilityStatus }}</p>
+                <div class="cart-controls">
+                  <button (click)="decrement(item)">−</button>
+                  <span>{{ productQuantities[item.id] || 0 }}</span>
+                  <button (click)="increment(item)">+</button>
+                  <button class="add-cart-btn" (click)="addToCart(item)" [disabled]="(productQuantities[item.id] || 0) === 0">Add to Cart</button>
+                </div> 
               </div>
             </div>
           </div>
@@ -39,16 +51,21 @@
     } @else {
     <!-- Show both types -->
     @for (item of displayedallProducts; track item.id) {
-      <div class="card">
+      <div class="card" >
         <div class="card-image-container">
-          <img [src]="item.image || item.thumbnail || item.images" [alt]="item.title" />
+          <img [src]="item.image || item.thumbnail || item.images" [alt]="item.title"  (error)="onImgError($event)" class="product-image" (click)="goToItem(  item.category ,item.id)"/>
           <div class="overlay">
             <div class="info">
               <h4>{{ sliceTitle ? (item.title | slice: 0:15) + '...' : item.title }}</h4>
               <p><strong>Brand:</strong> {{ item.brand }}</p>
               <p><strong>Discount:</strong> {{ item.discount || item.discountPercentage ||0 }}%</p>
               <p><strong>Price:</strong> ${{ item.price }}</p>
-               <p><strong>Rating:</strong> {{ item.availabilityStatus }}</p>
+               <div class="cart-controls">
+                  <button (click)="decrement(item)">−</button>
+                  <span>{{ productQuantities[item.id] || 0 }}</span>
+                  <button (click)="increment(item)">+</button>
+                  <button class="add-cart-btn" (click)="addToCart(item)" [disabled]="(productQuantities[item.id] || 0) === 0">Add to Cart</button>
+                </div> 
             </div>
           </div>
         </div>

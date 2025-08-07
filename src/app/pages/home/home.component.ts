@@ -88,8 +88,6 @@ CategoryProduct!: string[]
   }
 
   gotoallProducts(type: string) {
-    
-  console.log('Event received'); // Check if this appears
   this.router.navigate(['/user/home/all-products', type]);
 }
   previewProducts() {

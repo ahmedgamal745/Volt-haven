@@ -23,7 +23,7 @@ export const routes: Routes = [
             {path:'home/all-products/:type',loadComponent:()=>import('./pages/home/all-product/all-product.component').then((c)=>c.AllProductComponent)},
             {path:'details',loadComponent:()=>import('./pages/details/details.component').then((c)=>c.DetailsComponent)},
             {path:'products',loadComponent:()=>import('./pages/product/product.component').then((c)=>c.ProductComponent)},
-            {path:'cart',loadComponent:()=>import('./pages/cart/cart.component').then((c)=>c.CartComponent)},
+            {path:'cart/:category/:id',loadComponent:()=>import('./pages/cart/cart.component').then((c)=>c.CartComponent)},
             {path:'category',loadComponent:()=>import('./pages/category/category.component').then((c)=>c.CategoryComponent)},
             {path:'category/:category',loadComponent:()=>import('./pages/category/category-items/category-items.component').then((c)=>c.CategoryItemsComponent)},
         ]

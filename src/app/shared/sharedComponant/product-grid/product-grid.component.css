@@ -43,9 +43,9 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 80%;
   background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent 60%);
-  color: #fff;
+  color: #0f0a0a;
   opacity: 0;
   transition: opacity 0.4s ease;
   display: flex;
@@ -121,7 +121,9 @@
 .see-more-container button:hover {
   background-color: #125aa6;
 }
-
+.cart-controls span{
+  color:rgb(66, 233, 51);
+}
 /* Responsive for smaller devices */
 @media (max-width: 480px) {
   .cart-controls {
@@ -133,4 +135,29 @@
     width: 100%;
     margin-left: 0;
   }
+}
+
+/**************************** image not found  *************************/
+
+.card-image-container {
+  width: 100%;
+  height: 250px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Fallback if image load fails */
+.product-image.fallback {
+  background-image: url('../../../../assets/images/no-image-found.jpg'); /* ✅ Your CSS fallback image */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }

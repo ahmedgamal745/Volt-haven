@@ -1,50 +1,95 @@
+/* Footer base */
 .footer {
-  background-color: black;
-  color: white;
-  padding: 1.5rem 1rem;
-  text-align: center;
-  height: 35vh;
+  background-color: #1e1f26;
+  color: #ccc;
+  padding: 40px 20px;
+  font-family: 'Arial', sans-serif;
 }
 
+/* Footer layout */
 .footer-content {
-  max-width: 1200px;
-  margin: auto;
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-between;
-  align-items: center;
-  gap: 1.5rem;
+  flex-wrap: wrap;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.footer-section {
-  flex: 1 1 100%;
-}
-
-.footer-section.logo {
+/* Logo + brand */
+.logo {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
+  gap: 10px;
+  margin-bottom: 25px;
 }
 
-.footer-section.logo .brand-text {
-  font-size: 1.2rem;
+.brand-text {
+  font-size: 22px;
+  color: white;
   font-weight: bold;
-  color: white;
 }
 
-.footer-section.links a {
-  color: white;
-  margin: 0 1rem;
+/* Contact section */
+.contact-info {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contact-info li {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  margin-bottom: 15px;
+  color: #ccc;
+  line-height: 1.4;
+}
+
+.contact-info a {
+  color: #4da3ff;
   text-decoration: none;
-  transition: color 0.2s ease;
 }
 
-.footer-section.links a:hover {
-  color: #ddd;
+/* About text */
+.footer-right h4 {
+  color: white;
+  font-size: 18px;
+  margin-bottom: 10px;
 }
 
-.footer-section.copyright {
-  font-size: 0.875rem;
-  color: #aaa;
+.footer-right p {
+  color: #999;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+/* Social icons */
+.social-icons a {
+  display: inline-block;
+  background-color: #2c2d33;
+  color: white;
+  margin-right: 10px;
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 18px;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.social-icons a:hover {
+  background-color: #444;
+}
+
+/* Icons */
+.icon {
+  font-size: 18px;
+  line-height: 1.2;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+  }
 }
